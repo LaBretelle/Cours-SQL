@@ -1,0 +1,46 @@
+PRAGMA encoding = 'UTF-8';
+
+CREATE TABLE 'Etudiant' (
+id_etudiant				INTEGER PRIMARY KEY,
+nom						TEXT NON NULL,
+prenom					TEXT,
+date_de_naissance		TEXT,
+classe					TEXT
+);
+
+CREATE TABLE 'Professeur' (
+id_professeur			INTEGER PRIMARY KEY,
+nom						TEXT NON NULL,
+prenom					TEXT,
+date_de_naissance		TEXT
+);
+
+CREATE TABLE 'Enseignement' (
+id_enseignement			INTEGER PRIMARY KEY,
+intitule				TEXT,
+coeff					REAL
+);
+
+CREATE TABLE 'Salle' (
+id_salle				INTEGER PRIMARY KEY,
+nom_salle				TEXT,
+capacite				INTEGER
+);
+
+CREATE TABLE 'instrument' (
+id_instrument			INTEGER PRIMARY KEY,
+instrument				TEXT
+);
+
+
+CREATE TABLE 'etudie' (
+note					REAL PRIMARY KEY,
+Professeur				TEXT NOT NULL REFERENCES professeur(id_professeur),
+Etudiant				TEXT NOT NULL REFERENCES etudiant(id_etudiant)
+);
+
+CREATE TABLE 'se deroule (cours)' (
+date_cours				TEXT NOT NULL PRIMARY KEY,
+id_salle				INTEGER NOT NULL REFERENCES Salle(id_salle),
+enseignement				INTEGER NOT	NULL REFERENCES Enseignement(id_enseignement)
+);
